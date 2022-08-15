@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body class="linear center">
+    <div class="circles">
+        <div class="circle fill"></div>
+        <div class="circle outline"></div>
+        <div class="circle outline"></div>
+    </div>
+    <form class="sign-up center">
+        <h2>Sign Up</h2>
+        <div class="inputs">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" />
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" />
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" />
+            </div>
+        </div>
+        <button class="btn-white-outline">
+            Next Step<i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </form>
+    <script>
+        const concatinate = (array) => array.reduce((str, curr) => str + curr, '');
+
+        const inputs = [
+            [
+                { id: 'name', type: "text", label: "Name" },
+                { id: 'email', type: "email", label: "Email" },
+                { id: 'password', type: "password", label: "P@$$w0rd" },
+            ],
+            [
+                { id: 'rad', type: "radio", label: "Wtf" },
+                { id: 'rad', type: "radio", label: "Email" },
+                { id: 'rad', type: "radio", label: "P@$$w0rd" },
+            ],
+            [
+                { id: 'wth', type: "text", label: "Idk" },
+                { id: 'email', type: "email", label: "Email" },
+                { id: 'password', type: "password", label: "P@$$w0rd" },
+            ],
+        ];
+        const inputsElement = document.querySelector('.inputs');
+
+        
+        let [count, htmlforinputs] = inputsInit()
+        
+        const renderCount = (num) => {
+            inputsElement.innerHTML = htmlforinputs[num];
+            document.querySelector(`.circles .circle:nth-child(${num + 1})`).classList.add('fill')
+            document.querySelector(`.circles .circle:nth-child(${numt})`).classList.remove('fill')
+        }
+
+        document.querySelector('.sign-up').onsubmit = e => {
+            e.preventDefault();
+            count += 1;
+            renderCount(count)
+        }
+        document.querySelectorAll('.circles .circle').forEach((item, i) => {
+            item.onclick = () => {
+                count = i;
+                renderCount(count)
+            }
+        })
+
+
+        function inputsInit() {
+            let htmlforinputs = inputs.map(form => form.map(({ id, type, label }) => {
+                if (type === "text" || type === 'email' || type === 'password')
+                    return `<div class="group-input-text"><label for="${id}">${label}</label><input type="${type}" id="${id}"/></div>`;
+        
+                if (type === 'radio')
+                    return `
+            <label class="rad-label">
+            <input type="radio" class="rad-input" name="${id}">
+            <div class="rad-design"></div>
+            <div class="rad-text">${label}</div>
+            </label>`
+            }));
+            htmlforinputs = htmlforinputs.map(item => concatinate(item))
+            console.log(htmlforinputs)
+            let count = 0;
+            inputsElement.innerHTML = htmlforinputs[count];
+            return [count, htmlforinputs]
+        }
+        </script>
+</body>
+
+</html>

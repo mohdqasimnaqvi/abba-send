@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #6f2dbd;
+  --white: #f6f7eb;
+  --bg: #24252d;
+  --normal: #2c2e39;
+  font-family: Poppins, sans-serif;
+}
+body {
+    background-color: #24252D;
+    color: #fff;
+    min-height: 100vh;
+    padding: 60px;
+    padding-left: 20vw; 
+    padding-right: 20vw;
+    // place-items: center;
+}
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1 {
+  font-weight: 600;
+  font-size: 100px;
+  width: 80%;
+  margin-bottom: 50px;
+  line-height: 1.3;
+}
+h2 {
+  font-weight: 600;
+  font-size: 60px;
+  width: 50%;
+  margin-bottom: 50px;
+  line-height: 1.3;
+}
+.subtitle {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 23px !important;
+  line-height: 1.3;
+}
+
+img {
+    max-width: 100%;
+}
+
+.cards {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+.card {
+    padding: 30px 50px;
+    background-color: #2C2E39;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    & > img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+    }
+    h3 {
+        text-align: center;
+        margin-block: 20px;
+    }
+    .avatar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        img {
+            border-radius: 50%;
+        }
+    }
+}
+
+.search {
+    background-color: #2c2e39;
+    width: max-content;
+    padding: 10px 35px;
+    border-radius: 1000px;
+    margin-bottom: 30px;
+    input {
+        background-color: transparent;
+        border: none;
+        color: #fff;
+        font-size: 20px;
+        font-family: inherit;
+        width: 400px;
+        &:focus-visible {
+            outline: none;
+        }
+    }
+    i {
+        font-size: 20px;
+    }
+}
+
+.nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 10vw;
+    padding: 30px 25px 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: all 0.5s ease;
+    * {
+        transition: all 0.5s ease;
+    }
+    &:hover {
+        width: 30vw;
+        span {
+            transform: scaleX(1) translateX(00px);
+            opacity: 1;
+        }
+        i {
+            transform: translateX(0) ;
+        }
+        .img:hover {
+            h3, img:nth-of-type(1) {
+                opacity: 1;
+            }
+        }
+
+    }
+    .img {
+        margin-bottom: 40px;
+        position: relative;
+        height: auto;
+
+        * {
+            position: absolute;
+        }
+        h3 {
+            inset: 0;
+            margin: auto;
+            height: max-content;
+            width: max-content;
+            z-index: 2;
+        }
+        img:nth-of-type(1) {
+            filter: blur(4px);
+        }
+        h3, img:nth-of-type(1) {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        img:nth-of-type(2) {
+            position: static;
+        }
+    }
+    ul {
+        list-style-type: none;
+        
+        li {
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            font-size: 23px;
+            overflow: hidden;
+        }
+        i {
+            transform: translateX(100px);
+        }
+        span {
+            transform-origin: left;
+            transform: scaleX(0) translateX(100px);
+            // opacity: 0;
+            margin-left: 20px;
+            white-space: nowrap;
+        }
+    }
+}
+.primary {
+    color: var(--primary);
+}
+
+.inputs {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    .group {
+        display: flex;
+        flex-direction: column;
+        gap:20px;
+    }
+    .input {
+        padding: 20px 40px;
+        background-color: #2c2e39;
+        border-radius: 20px;
+    }
+    input {
+        all: unset;
+        height: 50px;
+        width: 325px;
+    }
+    i {
+        font-size: 30px;
+    }
+}
